@@ -50,7 +50,6 @@ export default function YourCampaigns() {
   const [selectedState, setSelectedState] = React.useState("");
   const [selectedCity, setSelectedCity] = React.useState("");
 
-
   const openSort = Boolean(anchorElSort);
   const openFilter = Boolean(anchorElFilter);
 

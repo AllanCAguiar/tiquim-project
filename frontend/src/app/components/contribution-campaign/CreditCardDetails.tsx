@@ -27,12 +27,14 @@ interface CreditCardDetailsProps {
     expirationDate: string;
     cvv: string;
   };
-  setErrors: React.Dispatch<React.SetStateAction<{
-    cardNumber: string;
-    cardHolderName: string;
-    expirationDate: string;
-    cvv: string;
-  }>>;
+  setErrors: React.Dispatch<
+    React.SetStateAction<{
+      cardNumber: string;
+      cardHolderName: string;
+      expirationDate: string;
+      cvv: string;
+    }>
+  >;
 }
 
 export default function CreditCardDetails({ errors, setErrors }: CreditCardDetailsProps) {
@@ -110,7 +112,13 @@ export default function CreditCardDetails({ errors, setErrors }: CreditCardDetai
         });
 
         setSelectedCard(cardId);
-        setErrors((prev) => ({ ...prev, cardNumber: "", cardHolderName: "", expirationDate: "", cvv: "" }));
+        setErrors((prev) => ({
+          ...prev,
+          cardNumber: "",
+          cardHolderName: "",
+          expirationDate: "",
+          cvv: "",
+        }));
       } else {
         console.warn(`Cartão com ID ${cardId} não encontrado.`);
       }
@@ -183,7 +191,9 @@ export default function CreditCardDetails({ errors, setErrors }: CreditCardDetai
                 fullWidth
                 error={!!errors.cardHolderName}
               />
-              {errors.cardHolderName && <FormHelperText error>{errors.cardHolderName}</FormHelperText>}
+              {errors.cardHolderName && (
+                <FormHelperText error>{errors.cardHolderName}</FormHelperText>
+              )}
             </Grid>
             <Grid container direction="row" spacing={2}>
               <Grid item xs={4.6}>
@@ -199,7 +209,9 @@ export default function CreditCardDetails({ errors, setErrors }: CreditCardDetai
                   inputProps={{ style: { textAlign: "center" } }}
                   error={!!errors.expirationDate}
                 />
-                {errors.expirationDate && <FormHelperText error>{errors.expirationDate}</FormHelperText>}
+                {errors.expirationDate && (
+                  <FormHelperText error>{errors.expirationDate}</FormHelperText>
+                )}
               </Grid>
               <Grid item xs={4.6}>
                 <OutlinedInput

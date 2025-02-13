@@ -36,9 +36,9 @@ export default function InfoHeader({ onPaymentMethodChange }: InfoProps) {
     const rawValue = event.target.value.replace(/\D/g, ""); // Remove caracteres não numéricos
     const formattedValue = rawValue
       ? new Intl.NumberFormat("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      }).format(parseFloat(rawValue) / 100)
+          style: "currency",
+          currency: "BRL",
+        }).format(parseFloat(rawValue) / 100)
       : "R$ "; // Valor padrão quando o campo está vazio
 
     const numericValue = parseFloat(rawValue) / 100;
@@ -81,7 +81,7 @@ export default function InfoHeader({ onPaymentMethodChange }: InfoProps) {
             <OutlinedInput
               value={contributionAmount}
               onChange={handleContributionChange}
-              inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+              inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
               startAdornment={<Typography sx={{ mr: 1 }}></Typography>}
             />
             {error && <FormHelperText>{error}</FormHelperText>}

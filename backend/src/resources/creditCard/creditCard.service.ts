@@ -14,7 +14,7 @@ export const createCreditCard = async (
   uid: string,
 ): Promise<CardDto> => {
   //deveria fazer um decript quando fosse ler
-  
+
   //const rounds = parseInt(process.env.BCRYPT_ROUNDS!);
   //const salt = await genSalt(rounds);
   //const cardNumber = await hash(creditCard.cardNumber, salt);
@@ -40,7 +40,7 @@ export const readCreditCard = async (uid: string): Promise<CardDto[]> => {
     select: {
       id: true,
       userId: true,
-      cardNumber:true,
+      cardNumber: true,
       cardExpiryDate: true,
       cardHolderName: true,
       cardLastDigits: true,

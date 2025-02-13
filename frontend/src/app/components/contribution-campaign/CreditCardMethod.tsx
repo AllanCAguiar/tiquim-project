@@ -15,10 +15,13 @@ import { Campaign } from "@/app/types/campaign";
 import { useState } from "react";
 import { useContext } from "react";
 
-
 const steps = ["Detalhes do Pagamento", "Endereço de Cobrança", "Revisão de Pagamento"];
 
-function getStepContent(step: number, errors: any, setErrors: React.Dispatch<React.SetStateAction<any>>) {
+function getStepContent(
+  step: number,
+  errors: any,
+  setErrors: React.Dispatch<React.SetStateAction<any>>,
+) {
   switch (step) {
     case 0:
       return <CreditCardDetails errors={errors} setErrors={setErrors} />;
@@ -90,7 +93,6 @@ export default function CreditCardMethod() {
     expirationDate: "",
     cvv: "",
   });
-
 
   const handleNext = () => {
     if (amount < 1 || isNaN(amount)) {

@@ -4,14 +4,20 @@ import FormLabel from "@mui/material/FormLabel";
 import Grid from "@mui/material/Grid";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { styled } from "@mui/system";
-import { Box, FormControlLabel, FormHelperText, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import {
+  Box,
+  FormControlLabel,
+  FormHelperText,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
 import { useAddress, useUserAddress } from "@/app/hooks/useAddress";
 import { useCountries } from "@/app/hooks/useCountries";
 import { useContext, useEffect } from "react";
 import PaymentContext from "../../states/PaymentProvider";
 import getAddress from "../../services/address";
 import useAuthContext from "@/app/hooks/useAuthContext";
-
 
 // Deixa os inputs alinhados
 const FormGrid = styled(Grid)(() => ({
@@ -25,9 +31,9 @@ const StyledOutlinedInput = styled(OutlinedInput)(() => ({
     "-moz-appearance": "textfield",
   },
   "& input[type=number]::-webkit-outer-spin-button, & input[type=number]::-webkit-inner-spin-button":
-  {
-    "-webkit-appearance": "none",
-  },
+    {
+      "-webkit-appearance": "none",
+    },
 }));
 
 interface AddressFormProps {
@@ -40,15 +46,17 @@ interface AddressFormProps {
     state: string;
     country: string;
   };
-  setErrors: React.Dispatch<React.SetStateAction<{
-    zip: string;
-    street: string;
-    number: string;
-    neighborhood: string;
-    city: string;
-    state: string;
-    country: string;
-  }>>;
+  setErrors: React.Dispatch<
+    React.SetStateAction<{
+      zip: string;
+      street: string;
+      number: string;
+      neighborhood: string;
+      city: string;
+      state: string;
+      country: string;
+    }>
+  >;
 }
 
 export default function AddressForm({ errors, setErrors }: AddressFormProps) {
@@ -118,7 +126,16 @@ export default function AddressForm({ errors, setErrors }: AddressFormProps) {
           country: calculatedAddress.country || "Brasil",
         });
         setSelectedAddress(addressId);
-        setErrors((prev) => ({ ...prev, zip: "", street: "", number: "", neighborhood: "", city: "", state: "", country: "" }));
+        setErrors((prev) => ({
+          ...prev,
+          zip: "",
+          street: "",
+          number: "",
+          neighborhood: "",
+          city: "",
+          state: "",
+          country: "",
+        }));
       } else {
         console.warn(`Endereço de ID ${addressId} não encontrado.`);
       }

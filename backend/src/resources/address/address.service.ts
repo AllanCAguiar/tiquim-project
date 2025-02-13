@@ -29,7 +29,6 @@ export const createAddress = async (
   }
 };
 
-
 export const listAddress = async (
   uid: string,
   skip?: number,

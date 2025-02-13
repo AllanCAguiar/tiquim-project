@@ -32,10 +32,10 @@ export function useCities(state: string) {
 }
 
 export function useUserAddress(userId: string) {
-  const {data, isPending, isError} = useQuery({
+  const { data, isPending, isError } = useQuery({
     queryKey: ["userAddresses", userId],
-    queryFn: () => getUserAddresses(userId)
-  })
+    queryFn: () => getUserAddresses(userId),
+  });
 
-  return {userAddress: data, isPending, isError}
+  return { userAddress: data, isPending, isError };
 }
